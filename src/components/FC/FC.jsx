@@ -12,11 +12,12 @@ const Fc = ({ name }) => {
     console.log("1");
     const tId = setTimeout(() => {
       setAge((prVal) => prVal + 1);
-    }, 2000);
+      console.log("setTimeout"); // todo - remove
+    }, 3000);
 
     return () => {
       console.log("2");
-      clearTimeout(tId);
+      // clearTimeout(tId);  // todo - comment
     };
   }, []);
 
