@@ -1,5 +1,5 @@
-import {createContext} from "react";
-import {IModal} from "./Modal/Modal";
+import { createContext } from "react";
+import { IModal } from "./Modal/Modal";
 
 const ModalContext = createContext({
   openModal: () => {},
@@ -8,7 +8,6 @@ const ModalContext = createContext({
 } as IValueModalProvider);
 
 export default ModalContext;
-
 
 export interface IValueModalProvider {
   isOpenedModal: boolean;

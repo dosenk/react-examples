@@ -1,4 +1,4 @@
-import {FC, ReactNode, useContext} from "react";
+import { FC, ReactNode, useContext } from "react";
 import TitleCloseBtn from "./TitleCloseBtn/TitleCloseBtn";
 import ModalContext from "../ModalContext";
 

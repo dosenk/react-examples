@@ -25,7 +25,7 @@ const DrawerProvider: FC<IDrawerProvider> = ({ children }) => {
       closeDrawer,
       isOpenedDrawer,
     }),
-    [openDrawer, closeDrawer, isOpenedDrawer],
+    [openDrawer, closeDrawer, isOpenedDrawer]
   );
 
   return (

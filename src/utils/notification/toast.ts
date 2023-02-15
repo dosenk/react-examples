@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 // eslint-disable-next-line import/prefer-default-export
 export const notify = (
   variant: "success" | "error" | "warn" | "info",
-  text: string,
+  text: string
 ) => {
   switch (variant) {
     case "success":
