@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 
 function App() {
   const { openModal } = useContext(ModalContext); // toDo asdas
-  // asassa;
 
   const handleClick = () => {
     openModal({
@@ -24,6 +23,12 @@ function App() {
       </Button>
     </div>
   );
+
+
+
+  
+
+
 }
 
 export default App;

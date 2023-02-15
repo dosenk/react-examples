@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-#yarn lint:fix
+yarn lint:fix
 #yarn lint
-npx lint-staged
+#npx lint-staged
