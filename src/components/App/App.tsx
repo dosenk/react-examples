@@ -4,7 +4,8 @@ import ModalContext from "../../contexts/ModalContext/ModalContext";
 import { Button } from "@mui/material";
 
 function App() {
-  const { openModal } = useContext(ModalContext);
+  const { openModal } = useContext(ModalContext); // toDo asdas
+  // asassa;
 
   const handleClick = () => {
     openModal({
