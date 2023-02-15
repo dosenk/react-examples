@@ -8,7 +8,11 @@ function App() {
 
   const handleClick = () => {
     openModal({
-      content: <div style={{ width: "200px", height: "200px" }}>Modal</div>,
+      content: (
+        <div style={{ width: "200px", height: "200px", background: "#ffffff" }}>
+          Modal
+        </div>
+      ),
     });
   };
 
