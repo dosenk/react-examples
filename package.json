@@ -65,7 +65,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix . & npx prettier --write ."
+    "*.{js,jsx,ts,tsx}": "eslint --fix"
   },
   "eslintConfig": {
     "extends": [

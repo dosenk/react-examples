@@ -3,4 +3,4 @@
 
 yarn lint:fix
 #yarn lint
-#npx lint-staged
+npx lint-staged
