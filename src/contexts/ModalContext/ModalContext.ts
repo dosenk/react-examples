@@ -1,11 +1,11 @@
 import { createContext } from "react";
 import { IModal } from "./Modal/Modal";
 
-const ModalContext = createContext({
+const ModalContext = createContext<IValueModalProvider>({
   openModal: () => {},
   closeModal: () => {},
   isOpenedModal: false,
-} as IValueModalProvider);
+});
 
 export default ModalContext;
 

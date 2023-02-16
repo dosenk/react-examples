@@ -11,6 +11,7 @@ export const signIn = createAsyncThunk(
   "user/signIn",
   async (data: ISignInPayload, { rejectWithValue }) => {
     try {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       return await signInApi(data);
     } catch (e: any) {
       return rejectWithValue(

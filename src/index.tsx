@@ -18,32 +18,27 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <DevSupport
-      ComponentPreviews={ComponentPreviews}
-      useInitialHook={useInitial}
-    >
-      <BrowserRouter>
-        <Provider store={store}>
-          <ThemeProvider theme={theme}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-              <ModalProvider>
-                <DrawerProvider>
-                  <CssBaseline />
-                  <App />
-                  <ToastContainer
-                    transition={Flip}
-                    autoClose={1800}
-                    hideProgressBar
-                    draggable={false}
-                    theme="colored"
-                  />
-                </DrawerProvider>
-              </ModalProvider>
-            </LocalizationProvider>
-          </ThemeProvider>
-        </Provider>
-      </BrowserRouter>
-    </DevSupport>
-  </React.StrictMode>
+  <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <ModalProvider>
+              <DrawerProvider>
+                <CssBaseline />
+                <App />
+                <ToastContainer
+                  transition={Flip}
+                  autoClose={1800}
+                  hideProgressBar
+                  draggable={false}
+                  theme="colored"
+                />
+              </DrawerProvider>
+            </ModalProvider>
+          </LocalizationProvider>
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
+  </DevSupport>
 );

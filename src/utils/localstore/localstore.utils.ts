@@ -1,11 +1,11 @@
-// export const getAuthToken = () => {
-//   return localStorage.getItem("authToken");
-// };
-//
-// export const setAuthToken = (authToken: string) => {
-//   return localStorage.setItem("authToken", authToken);
-// };
-//
+export const getAuthToken = () => {
+  return localStorage.getItem("authToken");
+};
+
+export const setAuthToken = (authToken: string) => {
+  return localStorage.setItem("authToken", authToken);
+};
+
 export const getRefreshToken = () => {
   return localStorage.getItem("refreshToken");
 };

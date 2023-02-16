@@ -1,41 +1,36 @@
-import React, { useContext, useEffect } from "react";
+import React, { useCallback, useContext } from "react";
 import "./App.css";
 import ModalContext from "../../contexts/ModalContext/ModalContext";
 import { Button } from "@mui/material";
-import { useAppDispatch } from "../../hooks/useStore";
-// import { signInApi } from "../../api/auth/auth.api";
-import { signIn } from "../../store/user/user.actions";
+import { useAppSelector } from "../../hooks/useStore";
+import ShowInfoModal from "../LoginFormModal/LoginFormModal";
+import TestContext from "../../contexts/TestContext/TestContext";
+import TestComponent from "../TestComponent/TestComponent";
+import { userSelector } from "../../store/user/user.selector";
 
 const App = () => {
-  const dispatch = useAppDispatch();
-  const { openModal } = useContext(ModalContext); // toDo asdas
-
-  const handleClick = () => {
-    // signInApi({ username: "kdulyt", password: "5t6q4KC7O" }).then((data) => {
-    //   console.log(data);
+  const { isAuth, user, loading } = useAppSelector(userSelector);
+  const { openModal } = useContext(ModalContext);
+  // const { openDrawer } = useContext(DrawerContext);
+  console.log(loading, user, isAuth);
+  const handleClick = useCallback(() => {
+    openModal({
+      content: <ShowInfoModal />,
+    });
+    // openDrawer({
+    //   content: <LoginFormModal handleSetValue={handleSetValue} />,
     // });
-    console.log(signIn);
-    // openModal({
-    //   content: (
-    //     <div style={{ width: "200px", height: "200px", background: "#ffffff" }}>
-    //       Modal
-
-    //     </div>
-    //   ),
-    // });
-    // dispatch(signIn({ username: "kdulyt", password: "5t6q4KC7O" })).then(
-    //   (res) => {
-    //     console.log(res);
-    //   }
-    // );
-  };
+  }, []);
 
   return (
-    <div className="App">
-      <Button onClick={handleClick} variant="contained">
-        OpenModal
-      </Button>
-    </div>
+    <TestContext.Provider value={""}>
+      <div className="App">
+        <Button onClick={handleClick} variant="contained">
+          Open AuthModal
+        </Button>
+      </div>
+      <TestComponent />
+    </TestContext.Provider>
   );
 };
 

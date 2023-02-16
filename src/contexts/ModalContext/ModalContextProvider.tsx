@@ -10,7 +10,6 @@ const ModalProvider: FC<IModalProvider> = ({ children }) => {
   });
 
   const openModal = useCallback((content: IModal): void => {
-    // @ts-ignore
     setModalContent(content);
     setIsOpenedModal(true);
   }, []);

@@ -5,6 +5,7 @@ export const store = configureStore({
   reducer: {
     user: userReducer,
   },
+  // devTools: true,
   // middleware: (getDefaultMiddleware: CurriedGetDefaultMiddleware) =>
   //   getDefaultMiddleware({
   //     serializableCheck: false,

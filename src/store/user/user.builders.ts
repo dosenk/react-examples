@@ -1,32 +1,28 @@
 import { ActionReducerMapBuilder as AcBuilder } from "@reduxjs/toolkit";
 import { NoInfer } from "@reduxjs/toolkit/dist/tsHelpers";
-import { logout, refresh, signIn } from "./user.actions";
+import { signIn } from "./user.actions";
 import { IUserState } from "./user.slice";
-import {
-  removeRefreshToken,
-  setRefreshToken,
-} from "../../utils/localstore/localstore.utils";
+import { setAuthToken } from "../../utils/localstore/localstore.utils";
 
-// const signInBuilder = (builder: AcBuilder<NoInfer<any>>) => {
-//   builder
-//     .addCase(signIn.pending, (state) => {
-//       state.authError = false;
-//       state.loading = true;
-//     })
-//     .addCase(signIn.fulfilled, (state, { payload }) => {
-//       console.log(payload);
-//       // const { refreshToken, user } = payload;
-//       // setRefreshToken(refreshToken);
-//       // state.isAuth = !!refreshToken;
-//       // state.user = user;
-//       // state.loading = false;
-//     })
-//     .addCase(signIn.rejected, (state) => {
-//       state.authError = true;
-//       state.loading = false;
-//     });
-// };
-//
+const signInBuilder = (builder: AcBuilder<NoInfer<IUserState>>) => {
+  builder
+    .addCase(signIn.pending, (state) => {
+      state.loading = true;
+    })
+    .addCase(signIn.fulfilled, (state, { payload }) => {
+      const { token, ...user } = payload;
+      state.error = "";
+      setAuthToken(token);
+      state.isAuth = !!token;
+      state.user = user;
+      state.loading = false;
+    })
+    .addCase(signIn.rejected, (state, { payload }) => {
+      state.loading = false;
+      if (typeof payload === "string") state.error = payload;
+    });
+};
+
 // const refreshBuilder = (builder: AcBuilder<NoInfer<IUserState>>) => {
 //   builder
 //     .addCase(refresh.pending, (state) => {
@@ -61,8 +57,8 @@ import {
 //     });
 // };
 
-// export default (builder: AcBuilder<NoInfer<IUserState>>) => {
-//   signInBuilder(builder);
-//   refreshBuilder(builder);
-//   logoutBuilder(builder);
-// };
+export default (builder: AcBuilder<NoInfer<IUserState>>) => {
+  signInBuilder(builder);
+  // refreshBuilder(builder);
+  // logoutBuilder(builder);
+};

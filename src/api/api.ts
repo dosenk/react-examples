@@ -1,6 +1,6 @@
 import axios from "axios";
-import { store } from "../store/store";
-import { logout, refresh } from "../store/user/user.actions";
+// import { store } from "../store/store";
+import { getAuthToken } from "../utils/localstore/localstore.utils";
 
 const { REACT_APP_BASE_URL } = process.env;
 
@@ -14,6 +14,16 @@ const $api = axios.create({
   // withCredentials: true,
 });
 
+$api.interceptors.request.use(
+  (config) => {
+    if (config) config.headers["Authorization"] = `Bearer ${getAuthToken()}`;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 $api.interceptors.response.use(
   (res) => res,
   async (AxiosError) => {
@@ -21,10 +31,10 @@ $api.interceptors.response.use(
     if (AxiosError.response?.status === 401 && !originalConfig.isRetry) {
       originalConfig.isRetry = true;
       try {
-        await store.dispatch(refresh());
+        // await store.dispatch(refresh());
         return await $api(originalConfig);
       } catch (e) {
-        await store.dispatch(logout());
+        // await store.dispatch(logout());
         window.location.reload();
       }
     }
