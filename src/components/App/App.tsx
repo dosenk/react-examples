@@ -1,19 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./App.css";
 import ModalContext from "../../contexts/ModalContext/ModalContext";
 import { Button } from "@mui/material";
+import { useAppDispatch } from "../../hooks/useStore";
+// import { signInApi } from "../../api/auth/auth.api";
+import { signIn } from "../../store/user/user.actions";
 
-function App() {
+const App = () => {
+  const dispatch = useAppDispatch();
   const { openModal } = useContext(ModalContext); // toDo asdas
 
   const handleClick = () => {
-    openModal({
-      content: (
-        <div style={{ width: "200px", height: "200px", background: "#ffffff" }}>
-          Modal
-        </div>
-      ),
-    });
+    // signInApi({ username: "kdulyt", password: "5t6q4KC7O" }).then((data) => {
+    //   console.log(data);
+    // });
+    console.log(signIn);
+    // openModal({
+    //   content: (
+    //     <div style={{ width: "200px", height: "200px", background: "#ffffff" }}>
+    //       Modal
+
+    //     </div>
+    //   ),
+    // });
+    // dispatch(signIn({ username: "kdulyt", password: "5t6q4KC7O" })).then(
+    //   (res) => {
+    //     console.log(res);
+    //   }
+    // );
   };
 
   return (
@@ -23,6 +37,6 @@ function App() {
       </Button>
     </div>
   );
-}
+};
 
 export default App;

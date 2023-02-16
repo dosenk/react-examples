@@ -3,8 +3,8 @@ import $api, { API_URL } from "../api";
 import { getRefreshToken } from "../../utils/localstore/localstore.utils";
 
 // user SIGN IN
-export const signInApi = async (payload: any): Promise<any> => {
-  const { data } = await $api.post("/auth/email/sign-in", payload);
+export const signInApi = async (payload: ISignInPayload): Promise<any> => {
+  const { data } = await $api.post("/auth/login", payload);
   return data;
 };
 
@@ -29,3 +29,8 @@ export const refreshApi = async () => {
   );
   return data;
 };
+
+export interface ISignInPayload {
+  username: string;
+  password: string;
+}

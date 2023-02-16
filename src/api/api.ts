@@ -4,14 +4,14 @@ import { logout, refresh } from "../store/user/user.actions";
 
 const { REACT_APP_BASE_URL } = process.env;
 
-export const API_URL = `${REACT_APP_BASE_URL}/api/v1`;
+export const API_URL = `${REACT_APP_BASE_URL}`;
 const $api = axios.create({
   headers: {
     "Content-type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    // "Access-Control-Allow-Origin": "*",
   },
   baseURL: API_URL,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 $api.interceptors.response.use(

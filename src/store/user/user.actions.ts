@@ -1,10 +1,15 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { logoutApi, refreshApi, signInApi } from "../../api/auth/auth.api";
+import {
+  ISignInPayload,
+  logoutApi,
+  refreshApi,
+  signInApi,
+} from "../../api/auth/auth.api";
 import { notify } from "../../utils/notification/toast";
 
 export const signIn = createAsyncThunk(
   "user/signIn",
-  async (data: any, { rejectWithValue }) => {
+  async (data: ISignInPayload, { rejectWithValue }) => {
     try {
       return await signInApi(data);
     } catch (e: any) {
